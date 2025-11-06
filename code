@@ -1,0 +1,67 @@
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    CallbackQueryHandler,
+    ContextTypes,
+)
+
+TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+
+MAIN_KEYBOARD = [
+    [InlineKeyboardButton("Contacts", callback_data="contacts")],
+    [InlineKeyboardButton("Projects", callback_data="projects")],
+    [InlineKeyboardButton("Who is Dmytro Khmeliuk?", callback_data="me")],
+]
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(
+        "Hi! This is the bot of Dmytro Khmeliuk. Choose what you want to know:",
+        reply_markup=InlineKeyboardMarkup(MAIN_KEYBOARD),
+    )
+
+async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    query = update.callback_query
+    await query.answer()
+
+    if query.data == "contacts":
+        text = (
+            "Telegram: @daimeeee\n"
+            "Phone: +380 95 63 58 404\n"
+            "Instagram: @onigiri_q"
+        )
+    elif query.data == "projects":
+        text = (
+            "Projects:\n"
+            "1) Personal Resume Telegram Bot\n"
+            "2) User Card Creator Bot"
+        )
+    elif query.data == "me":
+        text = (
+            "Dmytro Khmeliuk is a junior Telegram bot developer.\n"
+            "More details you can see in his Upwork profile."
+        )
+    elif query.data == "back":
+        await query.edit_message_text(
+            "Hi! This is the bot of Dmytro Khmeliuk. Choose what you want to know:",
+            reply_markup=InlineKeyboardMarkup(MAIN_KEYBOARD),
+        )
+        return
+    else:
+        text = "Unknown action. Please press /start again."
+
+    # adding button "back"
+    back_keyboard = [[InlineKeyboardButton("Back", callback_data="back")]]
+    await query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(back_keyboard))
+
+def main() -> None:
+    app = ApplicationBuilder().token(TOKEN).build()
+
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CallbackQueryHandler(button_callback))
+
+    print("Bot is running...")
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
