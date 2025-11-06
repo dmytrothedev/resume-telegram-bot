@@ -1,12 +1,12 @@
 # resume-telegram-bot
-# 🤖 Resume Telegram Bot
+# Resume Telegram Bot
 
 A **personal Telegram bot** built with Python and the `python-telegram-bot` library.  
 It introduces me — **Dmytro Khmeliuk** — as a developer and provides interactive information via inline buttons.
 
 ---
 
-## 🧠 About the Project
+##  About the Project
 
 This bot allows users to:
 - View my **contacts**, **projects**, and **personal info**
@@ -18,7 +18,7 @@ The bot was designed as a personal “digital business card” and runs entirely
 
 ---
 
-## 🧩 Technologies Used
+##  Technologies Used
 
 - **Python 3.11+**
 - **python-telegram-bot** (v20+)
