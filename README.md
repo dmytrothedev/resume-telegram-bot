@@ -1,4 +1,4 @@
-# resume-telegram-bot
+
 # Resume Telegram Bot
 
 A **personal Telegram bot** built with Python and the `python-telegram-bot` library.  
