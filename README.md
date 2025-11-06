@@ -4,7 +4,6 @@
 A **personal Telegram bot** built with Python and the `python-telegram-bot` library.  
 It introduces me — **Dmytro Khmeliuk** — as a developer and provides interactive information via inline buttons.
 
----
 
 ##  About the Project
 
@@ -16,7 +15,6 @@ This bot allows users to:
 
 The bot was designed as a personal “digital business card” and runs entirely on Python.
 
----
 
 ##  Technologies Used
 
@@ -25,6 +23,5 @@ The bot was designed as a personal “digital business card” and runs entirely
 - **Asyncio**
 - Inline keyboards and callback handlers
 
----
 
 
